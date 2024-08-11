@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Task.css'
 
 
 export const Task = ({input, setInput, allTask, setAllTask}) => {
-    // const [completedTask, setCompletedTask] = useState(false);
 
-    // const handleCheckBox = (index) =>{
-    //         if(completedTask.includes(index)){
-    //             setCompletedTask(completedTask.filter(taskIndex => taskIndex !==index));
-    //         }else{
-    //             setCompletedTask([...completedTask, index]);
-    //         }
+    useEffect(() =>{
+        localStorage.setItem("tasks", JSON.stringify(allTask));
+
+    },[allTask]);
+
+    useEffect(()=>{
+         const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setAllTask(JSON.parse(savedTasks));
+    }
+    },[])
+
     const handleDelete = (indexToRemove) =>{
         // alert("Do you want to delete the task?");
         let answer = window.confirm("Do you want to Delete task?");
