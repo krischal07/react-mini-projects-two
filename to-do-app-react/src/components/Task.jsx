@@ -12,20 +12,30 @@ export const Task = ({input, setInput, allTask, setAllTask}) => {
     //             setCompletedTask([...completedTask, index]);
     //         }
     const handleDelete = (indexToRemove) =>{
-        let upadtedAllTask = allTask.filter((task, index) => index !== indexToRemove);
-        setAllTask(upadtedAllTask); 
-        console.log(upadtedAllTask);
+        // alert("Do you want to delete the task?");
+        let answer = window.confirm("Do you want to Delete task?");
+        if(answer){   
+            let upadtedAllTask = allTask.filter((task, index) => index !== indexToRemove);
+            setAllTask(upadtedAllTask); 
+            console.log(upadtedAllTask);
+        }
+        console.log(answer);
+        
         
     }
 
     const handleEdit = (indexToEdit) => {
-            //This to bring the task in the input box
-            let editTask = allTask.filter((task,index) => index === indexToEdit );
-            setInput(editTask);
-
-            //This to remove the task from all the task
-            let upadtedAllTask = allTask.filter((task, index) => index !== indexToEdit);
-             setAllTask(upadtedAllTask); 
+        
+        let answer = window.confirm("Do you want to Edit task?");
+        if(answer){
+                //This to bring the task in the input box
+                let editTask = allTask.filter((task,index) => index === indexToEdit );
+                setInput(editTask);
+                
+                //This to remove the task from all the task
+                let upadtedAllTask = allTask.filter((task, index) => index !== indexToEdit);
+                setAllTask(upadtedAllTask); 
+            } 
     }
 
   return (
