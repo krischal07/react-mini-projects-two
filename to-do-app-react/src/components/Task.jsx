@@ -4,10 +4,10 @@ import './Task.css'
 
 export const Task = ({input, setInput, allTask, setAllTask}) => {
 
-    useEffect(() =>{
-        localStorage.setItem("tasks", JSON.stringify(allTask));
+    // useEffect(() =>{
+    //     localStorage.setItem("tasks", JSON.stringify(allTask));
 
-    },[allTask]);
+    // },[allTask]);
 
     useEffect(()=>{
          const savedTasks = localStorage.getItem('tasks');
