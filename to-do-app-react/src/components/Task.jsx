@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Task.css'
 
 
-export const Task = ({allTask, setAllTask}) => {
+export const Task = ({input, setInput, allTask, setAllTask}) => {
     // const [completedTask, setCompletedTask] = useState(false);
 
     // const handleCheckBox = (index) =>{
@@ -16,6 +16,16 @@ export const Task = ({allTask, setAllTask}) => {
         setAllTask(upadtedAllTask); 
         console.log(upadtedAllTask);
         
+    }
+
+    const handleEdit = (indexToEdit) => {
+            //This to bring the task in the input box
+            let editTask = allTask.filter((task,index) => index === indexToEdit );
+            setInput(editTask);
+
+            //This to remove the task from all the task
+            let upadtedAllTask = allTask.filter((task, index) => index !== indexToEdit);
+             setAllTask(upadtedAllTask); 
     }
 
   return (
@@ -35,29 +45,14 @@ export const Task = ({allTask, setAllTask}) => {
                                {task}
                              </div>
                          <div className='buttons'>
-                             <button><i class="fas fa-edit"></i></button>
+                             <button onClick={()=>handleEdit(index)}><i class="fas fa-edit"></i></button>
                              <button onClick={() =>handleDelete(index)}><i class="fas fa-trash"></i></button>
                          </div>
                          </span>
                          
                      </li>
                 )}
-                {/* <li>
-                <span>
-                        <div className=''>
-                            <input type="checkbox" />
-                            Get shit done
-                        </div>
-                    <div className='buttons'>
-                        <button><i class="fas fa-edit"></i></button>
-                        <button><i class="fas fa-trash"></i></button>
-                    </div>
-                    </span>
-                    
-                </li> */}
-             
             </ul>
-            {/* <li>Do epic shit</li> */}
         </div>
     </div>
   )

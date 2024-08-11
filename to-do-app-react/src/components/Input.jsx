@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import './Input.css'
 
-export const Input = ({allTask,setAllTask}) => {
-    const [input, setInput] = useState("");
+export const Input = ({input, setInput,allTask,setAllTask}) => {
 
     const handleChange = (e) =>{
             let task = e.target.value;

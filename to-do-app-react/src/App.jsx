@@ -5,13 +5,14 @@ import { Task } from './components/Task'
 
 export default function App() {
   const [allTask, setAllTask] = useState([]);
+  const [input, setInput] = useState("");
 
   return (
   <>
     <h1 className='heading'>ToDo List<span className='underline'>__</span><i class="fa fa-camera-retro fa-lg"></i></h1>
 
-    <Input allTask={allTask} setAllTask={setAllTask}/>
-    <Task allTask={allTask} setAllTask={setAllTask}/>
+    <Input input={input} setInput={setInput} allTask={allTask} setAllTask={setAllTask}/>
+    <Task input={input} setInput={setInput} allTask={allTask} setAllTask={setAllTask}/>
   </>
   )
 }
