@@ -1,0 +1,42 @@
+.input-field{
+    /* border: 3px solid green; */
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    width: 400px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 20px;
+    position: absolute;
+    border: none;
+    background-color: rgb(224, 216, 216);
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.btn-add{
+    background-color: rgb(10, 242, 10);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 40px;
+    border: none;
+    position: relative;
+    left:175px;
+    /* right: 0cqmax; */
+    /* border: 2px solid red; */
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.input::placeholder{
+    font-size: 20px;
+    padding: 10px;
+}
+
