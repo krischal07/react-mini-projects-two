@@ -39,7 +39,9 @@ const App = () => {
   const handleCompleteThing = async (e) => {
     e.target.setAttribute("disabled", true);
     setThing(getSuccessMessage());
-    await jsConfetti.addConfetti();
+    await jsConfetti.addConfetti({
+      // emojis: ["🫡", "🚀", "💹"],
+    });
     e.target.removeAttribute("disabled");
     setThing("");
     setIsCompleted(true);
