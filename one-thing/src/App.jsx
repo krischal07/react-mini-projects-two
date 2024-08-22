@@ -1,11 +1,33 @@
-import { ArrowRightCircleIcon } from "@heroicons/react/16/solid";
 import React, { useState } from "react";
+import CustomForm from "./components/CustomForm";
+import OneThing from "./components/OneThing";
+
+import JSConfetti from "js-confetti";
+const jsConfetti = new JSConfetti();
+
+function getSuccessMessage() {
+  const Messages = [
+    "Operation completed successfully!",
+    "Your changes have been saved!",
+    "Data submitted successfully!",
+    "Your request was processed successfully!",
+    "Item added to your cart!",
+    "Profile updated successfully!",
+    "Payment was successful!",
+    "Registration completed successfully!",
+    "Your settings have been updated!",
+    "File uploaded successfully!",
+  ];
+  return Messages[Math.floor(Math.random() * Messages.length)];
+}
 
 const App = () => {
   const [thing, setThing] = useState("");
+  const [isCompleted, setIsCompleted] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsCompleted(false);
     console.log(e);
   };
 
@@ -14,30 +36,28 @@ const App = () => {
     setThing(e.target.value);
   };
 
+  const handleCompleteThing = async (e) => {
+    e.target.setAttribute("disabled", true);
+    setThing(getSuccessMessage());
+    await jsConfetti.addConfetti();
+    e.target.removeAttribute("disabled");
+    setThing("");
+    setIsCompleted(true);
+  };
+
   return (
     <main className=" grid place-items-center min-h-screen bg-gradient-to-b from-slate-100 to-slate-500 dark:from-slate-500 dark:to-slate-900 text-slate-900 dark:text-slate-200">
       <div className="grid place-items-center gap-8 m-8">
-        <h1 className="text-3xl sm:text-6xl font-bold text-center">
-          What is your "one Thing"?
-        </h1>
-        <form
-          action=""
-          className="flex ring-4 rounded-md ring-slate-200 focus-within:ring-teal-600 focus-within:ring-offset-4 bg-slate-200 ring-offset-slate-200 dark:ring-offset-slate-800"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="text"
-            className="bg-inherit rounded-md font-sans text-slate-800 py-2 px-5 focus:outline-none text-xl sm:text-2xl placeholder:text-slate-400 caret-teal-600 appearance-none w-full"
-            placeholder="Enter One Thing"
-            autoFocus
-            maxLength="64"
-            value={thing}
-            onInput={handleInput}
+        {isCompleted && (
+          <CustomForm
+            thing={thing}
+            handleInput={handleInput}
+            handleSubmit={handleSubmit}
           />
-          <button className="bg-inherit rounded-md font-sans text-slate-800 py-2 px-5 focus:outline-none focus:text-teal-600 hover:text-teal-600">
-            <ArrowRightCircleIcon className="h-12 w-12 " />
-          </button>
-        </form>
+        )}
+        {!isCompleted && (
+          <OneThing thing={thing} handleCompletedThing={handleCompleteThing} />
+        )}
       </div>
     </main>
   );
