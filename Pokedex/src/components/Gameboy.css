@@ -1,0 +1,20 @@
+.gamecontainer{
+    position: relative;
+}
+
+.gameboy{
+    color: white;
+    margin: 30px;
+}
+
+
+.corner{
+    background-color: white;
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    top: -25px;
+    left: 110px;
+    transform: rotate(45deg);
+    /* z-index: -1; */
+}
