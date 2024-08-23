@@ -18,8 +18,15 @@ const Gameboy = () => {
   return (
     <div className="gamecontainer border-4 border-yellow-400 flex justify-center">
       <div className="gameboy bg-red-500 w-96 h-[500px] flex flex-col items-center">
-        <img src={pokedata.sprites.front_default} alt="" />
-        <h1 className="text-2xl m-4 font-bold">{pokedata.name}</h1>
+        <img
+          src={pokedata.sprites.front_default}
+          alt=""
+          className="m-10 w-[300px] h-[250px] border-4 border-black rounded-md"
+        />
+        <h1 className="text-2xl m-[-20px] font-bold">
+          {pokedata.name.toUpperCase()}
+        </h1>
+        <p>{pokedata.types}</p>
       </div>
       <div className="corner"></div>
     </div>
