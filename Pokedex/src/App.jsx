@@ -1,7 +1,13 @@
 import React from "react";
+import logo from "./assets/logo_pokemon.png";
+import Title from "./components/Title";
 
 const App = () => {
-  return <div className="border-4 border-red-500">App</div>;
+  return (
+    <div>
+      <Title />
+    </div>
+  );
 };
 
 export default App;
